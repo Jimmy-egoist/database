@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Product | FruitKingdom</title>
+<link href="../ecommercefall2020/web/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../static/js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="../ecommercefall2020/web/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="wizard hats, armor, invisibility cloak, robes, plague doctor mask, ghost mask" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<link href="../static/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../static/js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="../static/js/simpleCart.min.js"> </script>
+<!-- slide -->
+</head>
+<body>
+	<style>
+	.textarea{
+	border: 1px solid #EEE;
+		outline-color:#52D0C4;
+		width: 100%;
+		font-size: 1em;
+		padding: 0.5em;
+		margin: 0.5em 0;
+	}
+	.number{
+	   border: 1px solid #EEE;
+		outline-color:#52D0C4;
+		width: 100%;
+		font-size: 1em;
+		padding: 0.5em;
+		margin: 0.5em 0;
+	}
+	</style>
+<!--header-->
+{% include "header.html" %}
+<!--//header-->
+<div class="container">
+	<div class="register">
+		{% if product_id != '0' %}
+		    <h1>Edit Product #{{product_id}}</h1>
+        {% else %}
+            <h1>Add New Product</h1>
+        {% endif %}
+		  	  <form  method="post">
+				 <div class="col-md-6  register-top-grid">
+					<div class="mation">
+						<span>Name</span>
+						<input type="text" class="textarea" name="name" value="{{name}}" required>
+				        <span>Inventory</span>
+                        <input type="number" name="inv" min="1" value="{{inv}}" required oninput="check(this)">
+						<span>Price</span>
+						<input type="number" min="0.00" step="0.01" class="textarea" name="price" value="{{price}}" required>
+                    </div>
+                </div>
+  <div class=" col-md-6 register-bottom-grid">
+    <div class="mation">
+
+        <span>Image Path</span>
+        <input type="text" name="img" value="{{img}}">
+      </div>
+    </div>
+      <div class="clearfix"> </div>
+        <input type="submit" value="submit">
+      <div style="color: red" class="msg">{{ message }}</div>
+    </form>
+
+
+</div>
+</div>
+<script>
+    function check(input) {
+        if (input.value == 0) {
+            input.setCustomValidity('The number must not be zero.');
+        } else {
+            input.setCustomValidity('');
+        }
+    }
+
+    //$(document).ready.(function()) {
+    $('#type').val("{{type_id}}");
+    //}
+</script>
+<!--footer-->
+{% include "footer.html" %}
+
+<!--//footer-->
+</body>
+</html>

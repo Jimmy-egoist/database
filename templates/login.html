@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login | FruitKingdom</title>
+<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../static/js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="wizard hats, armor, invisibility cloak, robes, plague doctor mask, ghost mask" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<link href="../static/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../static/js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="../static/js/simpleCart.min.js"> </script>
+<!-- slide -->
+<style>
+    .employee {
+        background: none!important;
+        border: none;
+        padding: 0!important;
+        color:#069;
+        font-size: 14px;
+        font-family: arial, sans-serif;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<!--header-->
+{% include "header.html" %}
+<!--//header-->
+<div class="account">
+	<div class="container">
+		<h1>Account</h1>
+		<div class="account_grid">
+            <div class="col-md-6 login-left">
+                 <h4>NEW CUSTOMERS</h4>
+                 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                 <a class="acount-btn" href="/signup">Create an Account</a>
+            </div>
+
+            <div class="col-md-6 login-right">
+			 <form method="post">
+
+				 <span>Email Address</span>
+				 <input type="text" class="textarea" name="email" required>
+
+				 <span>Password</span>
+				 <input type="password" class="textarea" name="password" required>
+				 <div class="word-in">
+                    <button type="submit" name="login" value="employee" class="employee">Employee Login</button>
+                    <input type="submit" name="login" value="login">
+                    <div style="color: red" class="msg">{{ message }}</div>
+                 </div>
+             </form>
+            </div>
+           <div class="clearfix"> </div>
+         </div>
+	</div>
+    <br/>
+</div>
+
+<!--footer-->
+{% include "footer.html" %}
+
+<!--//footer-->
+</body>
+<script>
+    $("Login").click(function() {
+        $.post('/button');
+    });
+</script>
+</html>

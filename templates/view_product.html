@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Enchantr</title>
+<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../static/js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="wizard hats, armor, invisibility cloak, robes, plague doctor mask, ghost mask" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<link href="../static/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../static/js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="../static/js/simpleCart.min.js"> </script>
+<!-- slide -->
+<style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px;
+      display: flex;
+    }
+    /* Columns */
+    .left-column {
+      width: 65%;
+      position: relative;
+    }
+
+    .right-column {
+      width: 35%;
+      margin-top: 60px;
+    }
+    /* Left Column */
+    .left-column img {
+      width: 65%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    /* Product Description */
+    .product-description {
+      border-bottom: 1px solid #E1E8EE;
+      margin-bottom: 20px;
+    }
+    .product-description span {
+      font-size: 12px;
+      color: #358ED7;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .product-description h1 {
+      font-weight: 300;
+      font-size: 52px;
+      color: #43484D;
+      letter-spacing: -2px;
+    }
+    .product-description p {
+      font-size: 16px;
+      font-weight: 300;
+      color: #86939E;
+      line-height: 24px;
+    }
+    /* Product Price */
+    .product-price {
+      display: flex;
+      align-items: center;
+    }
+
+    .product-price span {
+      font-size: 26px;
+      font-weight: 300;
+      color: #43474D;
+      margin-right: 20px;
+    }
+
+    .cart-btn {
+      display: inline-block;
+      background-color: #7DC855;
+      border-radius: 6px;
+      font-size: 16px;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 12px 30px;
+      transition: all .5s;
+    }
+    .cart-btn:hover {
+      background-color: #64af3d;
+    }
+</style>
+</head>
+<body>
+<!--header-->
+{% include "header.html" %}
+
+<!--content-->
+<main class="container">
+  <!-- Left Column Image -->
+  <div class="left-column">
+    <img src="{{img}}" alt="">
+  </div>
+ 
+ 
+  <!-- Right Column -->
+  <div class="right-column"> 
+    <!-- Product Description -->
+    <div class="product-description">
+      <span>{{type}}</span>
+      <h1>{{name}}</h1>
+      <p>{{desc}}</p>
+    </div>
+ <form method="post">
+    <!-- Product Configuration -->
+    <div class="product-configuration">
+      <div class="mation">
+        <input class="w3-input w3-border" style="width:100px" id="quantity" name="quantity" min="1" max={{inv}} type="number" placeholder="Quantity" required>
+      </div>
+    </div>
+    <!-- Product Pricing -->
+    <div class="product-price">
+      <span>${{price}}</span>
+      <button type="submit" class="cart-btn">Add to Cart</button>
+    </div>
+   </form>
+  </div>
+</main>

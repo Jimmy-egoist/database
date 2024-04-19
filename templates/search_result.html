@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login | FruitKingdom</title>
+<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../static/js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="wizard hats, armor, invisibility cloak, robes, plague doctor mask, ghost mask" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<link href="../static/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../static/js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="../static/js/simpleCart.min.js"> </script>
+<!-- slide -->
+</head>
+<body>
+<!--header-->
+{% include "header.html" %}
+<!--//header-->
+<!--content-->
+<div class="products">
+	<div class="container">
+		<h1>Search Results</h1>
+			<div class="mcol-md-2 search">
+				<div class="nav-element advanced-sortby">
+
+				</div>
+			</div>
+
+		<div class="col-md-12">
+			<div class="content-top1">
+				{% for data in itemdata %}
+				<div class="col-md-4 col-md3">
+					<div class="col-md1 simpleCart_shelfItem">
+						<a href="/view_product?id={{data[0]}}">
+							<img class="img-responsive" src={{data[3]}}
+								 alt=" " />
+						</a>
+						<h3><a href="/view_product?id={{data[0]}}">{{data[1]}}</a></h3>
+						<div class="price">
+								<h5 class="item_price">$ {{data[2]}}</h5>
+								<a href="/view_product?id={{data[0]}}" class="item_add">Buy Now</a>
+								<div class="clearfix"> </div>
+						</div>
+					</div>
+
+				</div>
+				{% endfor %}
+			</div>
+
+		</div>
+			<!--categories-->
+				<!--initiate accordion-->
+						<script type="text/javascript">
+							$(function() {
+							    var menu_ul = $('.menu-drop > li > ul'),
+							           menu_a  = $('.menu-drop > li > a');
+							    menu_ul.hide();
+							    menu_a.click(function(e) {
+							        e.preventDefault();
+							        if(!$(this).hasClass('active')) {
+							            menu_a.removeClass('active');
+							            menu_ul.filter(':visible').slideUp('normal');
+							            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+							        } else {
+							            $(this).removeClass('active');
+							            $(this).next().stop(true,true).slideUp('normal');
+							        }
+							    });
+
+							});
+						</script>
+<!--//menu-->
+
+<!--tag-->
+	</div>
+</div>
+<!--//content-->
+
+<!--footer-->
+{% include "footer.html" %}
+
+<!--//footer-->
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FruitKingdom | View Past Orders</title>
+<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../static/js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="wizard hats, armor, invisibility cloak, robes, plague doctor mask, ghost mask" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<link href="../static/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../static/js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="../static/js/simpleCart.min.js"> </script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- slide -->
+<style>
+h1 {
+  font-size: 3em;
+  font-family: 'OleoScript-Regular';
+  text-align: center;
+  margin: 0 0 1em;    
+}
+h2 {
+  font-size: 1.5em;
+  font-family: 'OleoScript-Regular';
+}
+.order_table {
+  width: 100%;
+  background-color: #D0D0D0;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #52D0C4;
+  border-style: solid;
+  color: #000000;
+  padding-top: 20px;
+}
+
+.order_table td, .order_table th {
+  border-width: 2px;
+  border-color: #52D0C4;
+  border-style: solid;
+  padding: 5px;
+  color: #000000;
+}
+
+.order_table thead {
+  background-color: #52d0c4;
+}
+</style>
+</head>
+<body>
+<!--header-->
+{% include "header.html" %}
+<!--//header-->
+
+<div class="container">
+    <h1>View Past Orders</h1>
+    <div>
+        <table class="order_table">
+            <thead>
+            <tr>
+                <th>Order Number</th>
+                <th>Order Placed Date</th>
+                <th>Product Name</th>
+                <th>Product Quantity</th>
+                <th>Order Cost</th>
+                <th>Salesperson Name</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for row in order_data %}
+                    <tr>
+                        <td>{{row[0]}}</td>
+                        <td>{{row[1]}}</td>
+                        <td>{{row[2]}}</td>
+                        <td>{{row[3]}}</td>
+                        <td>${{row[4]}}</td>
+                        <td>{{row[5]}} {{row[6]}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<br/>
+
+<!--footer-->
+{% include "footer.html" %}
+
+<!--//footer-->
+</body>
+</html>

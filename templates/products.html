@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FruitKingdom | Manage Products</title>
+<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../static/js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="wizard hats, armor, invisibility cloak, robes, plague doctor mask, ghost mask" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- start menu -->
+<link href="../static/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="../static/js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<script src="../static/js/simpleCart.min.js"> </script>
+<!-- slide -->
+<style>
+h1 {
+  font-size: 3em;
+  font-family: 'OleoScript-Regular';
+  text-align: center;
+  margin: 0 0 1em;    
+}
+h2 {
+  font-size: 1.5em;
+  font-family: 'OleoScript-Regular';
+}
+.prod_table {
+  width: 100%;
+  background-color: #D0D0D0;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #52D0C4;
+  border-style: solid;
+  color: #000000;
+  padding-top: 20px;
+}
+
+.prod_table td, .prod_table th {
+  border-width: 2px;
+  border-color: #52D0C4;
+  border-style: solid;
+  padding: 5px;
+  color: #000000;
+}
+
+.prod_table thead {
+  background-color: #52d0c4;
+}
+</style>
+</head>
+<body>
+<!--header-->
+{% include "header.html" %}
+<!--//header-->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <h1>Manage Products</h1>
+    {% if session['job_title'] == 'Manager' %}
+        <a href="/edit_product?id=0&new=True" style="font-family:'OleoScript-Regular'; font-size: 1.5em">Add New Product</a>
+        <br/><br/>
+    {% endif %}
+    <div>
+        <table class="prod_table">
+            <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Inventory</th>
+                <th>Price</th>
+                <th>Image Path</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for row in prod_data %}
+                    <tr>
+                        <td data-th="ID">
+                            {% if session['job_title'] != 'Intern' %}<a href="/edit_product?id={{row[0]}}&new=False" value=cust_{{row[0]}}>{{row[0]}}</a>
+                            {% else %}{{row[0]}}{% endif %}
+                        </td>
+                        <td data-th="Product Name">{{row[1]}}</td>
+                        <td data-th="Inventory">{{row[2]}}</td>
+                        <td data-th="Price">${{row[3]}}</td>
+                        <td data-th="Image Path">{{row[4]}}</td>
+                            <td class="actions" data-th=""><button class="btn btn-danger btn-sm" onclick="window.location.href='/remove_product?id={{row[0]}}';"><i class="fa fa-trash-o"></i></button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <input type="submit" value="add" onclick="window.location.href='/add_product';">
+
+    </div>
+</div>
+</body>
+</html>
