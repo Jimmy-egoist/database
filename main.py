@@ -13,6 +13,7 @@ app.config['SECRET_KEY'] = "random string"
 
 mysql.init_app(app)
 
+# This project has been uploaded to GitHub.
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
